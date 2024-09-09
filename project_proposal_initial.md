@@ -55,7 +55,6 @@ Data may be collected from the following non-exclusive list of sources:
 - Inter-American Development Bank (IADB): For per-capita end-user consumption.
 
 - World Bank Group: For global development data.
-
 ```
 
 **Background Knowledge:**
