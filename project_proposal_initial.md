@@ -5,14 +5,14 @@
 
 **Keywords:** Clean energy growth, sustainability, energy policies
 
-**Description:** This project seeks to investigate the factors impacting renewable energy adoption in different
-countries around the world. The study will focus on examining how variables such as economic status, government
-policies, energy demand, public investment, and environmental performances interplay with energy participation figures
-in total energy production. The type of data to be analyzed includes total production, production from solar, wind,
-hydroelectric, and geothermal sources, economic indicators, quantification of national policies such as total tax
-deductions for renewable energies and renewable energy targets, per-capita energy consumption figures, public
-investment amounts, and EPI (Energy Performance Index) results.<br><br>
-Some of the questions that may be selected to investigate relationships are illustrated in the following outline:
+**Description:** This project aims to investigate the factors influencing renewable energy adoption across various
+countries. The study will focus on examining how variables such as economic status, government policies, energy demand,
+public investment, and environmental performances interact with renewable energy participation in total energy
+production. The type of data to be analyzed includes total energy production, production from solar, wind,
+hydroelectric, and geothermal sources, economic indicators, national policy metrics (e.g., tax incentives and targets)
+per-capita energy consumption figures, public investment amounts, and EPI (Energy Performance Index) results.<br><br>
+
+Some of the key research questions that may be explored include:
 
 ```  
 - Which countries have the highest per capita energy demand and lowest EPI scores?
@@ -21,31 +21,31 @@ Some of the questions that may be selected to investigate relationships are illu
 
 - Are government targets aligned with EPI expectations?
 
-- Which end-use industry sector generally has the highest percentage of renewable energy as its source of energy?
+- Which end-use industry sector generally has the highest percentage of renewable energy as their energy source?
 
-- How does the previous measurement vary by country? 
+- How does that measurement vary by country? 
 ```
 
-**Intellectual Merit:** The project has the potential to discover measurements about how different countries are
-performing and determining whether they need to act upon these discovered insights. It will also detect irregularities
-and country-specific situations when finding contradictions in expected relationships. It may also discover key drivers
-that tend to accelerate the pace of renewable energy adoption.
+**Intellectual Merit:** The project has the potential to uncover insights about how different countries are
+performing in renewable energy adoption and whether specific actions are necessary based on these findings.
+It will also detect irregularities and country-specific situations that may contradict expected relationships, and
+offer a deeper understanding about what accelerates renewable energy adoption.
 
 **Data Sourcing:** The methodology for retrieving relevant data is described as such:
 
 ```  
 1 Defining data requirements.
 
-2 Selecting a data source.
+2 Selecting data sources.
 
-3 Accessing publicly available free data sets or databases.
+3 Accessing publicly available data sets or databases.
 
-4 Verifying data integrity and applying formatting.
+4 Verifying data integrity and formatting.
 
-5 Keeping detailed documentation and relevant restrictions.
+5 Maintaining detailed documentation and identifying relevant restrictions.
 ```
 
-Data may be collected from the following non-exclusive list of sources:
+Possible sources of data include:
 
 ```  
 - International Energy Agency (IEA): For global energy consumption, production data, and energy investment trends.
@@ -54,7 +54,7 @@ Data may be collected from the following non-exclusive list of sources:
  
 - Inter-American Development Bank (IADB): For per-capita end-user consumption.
 
-- World Bank Group: For global development data.
+- World Bank Group: For global development statistics.
 ```
 
 **Background Knowledge:**
