@@ -3,7 +3,7 @@
 #### Author: Gonzalo Allendes
 #### Date: October 17th, 2024
 
-### **Data File 1**: [IRENA (2024), Renewable energy statistics 2024](data_original%2FIRENA_Stats_extract_2024%20H2.xlsx)
+### **Data File 1**: [IRENA (2024), Renewable energy statistics 2024](data_original/IRENA_Stats_extract_2024 H2.xlsx)
 
 #### 1. Basic Questions
 
@@ -61,13 +61,13 @@ Melnikov, Adrian Whiteman.
 > 
 > | Region | Sub-region     | Country | ISO3 code | M49 code | RE or Non-RE    | Group Technology | Technology          | Sub-Technology      | Producer Type | Year | Electricity Generation (GWh) | Electricity Installed Capacity (MW) | Heat Generation (TJ) | Off-grid Biogas for Cooking (1,000 inhabitants) | Off-grid Biogas Production (1,000 m³) | Off-grid Electricity Access (1,000 inhabitants) | Public Flows (2021 USD M) | SDG 7a1 Intl. Public Flows (2021 USD M) | SDG 7b1 RE capacity per capita (W/inhabitant) |
 > |--------|----------------|---------|-----------|----------|-----------------|------------------|---------------------|---------------------|---------------|------|------------------------------|-------------------------------------|----------------------|-------------------------------------------------|---------------------------------------|-------------------------------------------------|---------------------------|-----------------------------------------|-----------------------------------------------|
-> | Europe | Western Europe | Austria | AUT       | 40       | Total Renewable | Wind energy      | Onshore wind energy | Onshore wind energy | All types     | 2022 |                              |                                     |                      |                                                 |                                       |                                                 | 2,990235202               |                                         | 417,8938538                                   |
+> | Europe | Western Europe | Austria | AUT       | 40       | Total Renewable | Wind energy      | Onshore wind energy | Onshore wind energy | All types     | 2022 |                              |                                     |                      |                                                 |                                       |                                                 | 2.990235202               |                                         | 417.8938538                                   |
 > 
 > 
 > 
 >  - **Interpretation:** This record in the data displays the public investments and aid dedicated to financing on-grid and off-grid wind energy (all of it was onshore) and per-capita installed capacity of this type of energy, for the year 2022. Considering an installed capacity of approximately 3.580 MW in 2022 and a population of around 9M, the per capita RE capacity in this record is reasonable. 
 
-### **Data File 2**: [Environmental Performance Index 2024](data_original%2Fepi2024results.csv)
+### **Data File 2**: [Environmental Performance Index 2024](data_original/epi2024results.csv)
 
 #### 1. Basic Questions
 
@@ -190,7 +190,7 @@ Melnikov, Adrian Whiteman.
 > 
 > - **Interpretation**: This record displays current versus baseline indicator scores in the EPI (2024) for the United States of America. With a score of 57.2, the U.S. ranks 35th in this year's EPI ranking. This can be confirmed by [downloading the PDF report here](https://epi.yale.edu/downloads/2024epireport.pdf).
 
-### **Data File 3**: [Population, total.]()
+### **Data File 3**: [Population, total.](data_original/API_SP.POP.TOTL_DS2_en_csv_v2_31753.csv)
 
 #### 1. Basic Questions
 
