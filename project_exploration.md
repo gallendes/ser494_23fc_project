@@ -3,7 +3,7 @@
 #### Author: Gonzalo Allendes
 #### Date: October 17th, 2024
 
-### **Data File 1**: [IRENA (2024), Renewable energy statistics 2024](data_original/IRENA_Stats_extract_2024 H2.xlsx)
+### **Data File 1**: [IRENA (2024), Renewable energy statistics 2024](data_original/IRENA_Stats_extract_2024%20H2.xlsx)
 
 #### 1. Basic Questions
 
