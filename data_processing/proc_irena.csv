@@ -1,4 +1,4 @@
-Region,Country Code,Country,Year,Public Flows (2021 USD M),Population,Public Flows per Capita (2021 USD),Total Non-Renewable,Total Renewable,Renewable Energy Share of Electricity Production (%),SDG 7b1 RE capacity per capita (W/inhabitant)
+Region,Country Code,Country,Year,Public Flows (2021 USD M),Population,Public Flows per Capita (USD),Total Non-Renewable,Total Renewable,Renewable Energy Share of Electricity Production (%),SDG 7b1 RE capacity per capita (W/inhabitant)
 Africa,AGO,Angola,2000,0.0,16394062.0,0.0,303.649,900.2900000000001,0.7477870556564743,14.36977608
 Africa,AGO,Angola,2001,0.0,16941587.0,0.0,357.58799999999997,1010.274,0.7385788917303061,13.911211508
 Africa,AGO,Angola,2002,0.0,17516139.0,0.0,357.58799999999997,1130.254,0.7596599638940156,13.454905790000002

@@ -1,4 +1,4 @@
-Region,Country Code,Country,Year,Public Flows (2021 USD M),Population,Public Flows per Capita (2021 USD),Total Non-Renewable,Total Renewable,Renewable Energy Share of Electricity Production (%),SDG 7b1 RE capacity per capita (W/inhabitant),EPI.old,EPI.new,CDA.old,CDA.new
+Region,Country Code,Country,Year,Public Flows (2021 USD M),Population,Public Flows per Capita (USD),Total Non-Renewable,Total Renewable,Renewable Energy Share of Electricity Production (%),SDG 7b1 RE capacity per capita (W/inhabitant),EPI.old,EPI.new,CDA.old,CDA.new
 Africa,AGO,Angola,2022,82.842398046,35588987.0,2.3277537527550307,4475.235,14407.024999999998,0.7629926184683401,114.24140844600001,31.9,40.1,26.4,54.7
 Africa,BDI,Burundi,2022,0.0,12889576.0,0.0,261.244,264.088,0.5027068596620803,5.918425866,34.8,33.5,12.9,4.9
 Africa,BEN,Benin,2022,103.944283295,13352864.0,7.784418630714729,1340.296,11.482,0.00849399827486466,2.129880151,38.1,37.8,23.2,22.0

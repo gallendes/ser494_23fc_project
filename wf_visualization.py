@@ -1,6 +1,8 @@
 import pandas as pd
 import matplotlib.pyplot as plt
 import matplotlib.ticker as mtick
+import numpy
+import seaborn as sns
 
 def compound_stats(df, feature_name):
     result = pd.pivot_table(df, values=feature_name, index=['Year'],
@@ -40,8 +42,8 @@ def main():
     proc_irena_epi = pd.read_csv(file_2)
 
     # (1) Summary Statistics
-    # Computes Yearly Min, Median, and Max for Public Flows per Capita (2021 USD)
-    quant_stat_1 = compound_stats(proc_irena, "Public Flows per Capita (2021 USD)")
+    # Computes Yearly Min, Median, and Max for Public Flows per Capita (USD)
+    quant_stat_1 = compound_stats(proc_irena, "Public Flows per Capita (USD)")
     # Computes Yearly Min, Median, and Max for Renewable Energy Share of Electricity Production (%)
     quant_stat_2 = compound_stats(proc_irena, "Renewable Energy Share of Electricity Production (%)")
     # Computes Yearly Min, Median, and Max for SDG 7b1 RE capacity per capita (W/inhabitant)
@@ -56,7 +58,23 @@ def main():
     # Print Summary Stats
     summary_filename = "data_processing\summary.txt"
     with open(summary_filename, "w") as summary_file:
-        summary_file.write('Public Flows per Capita (2021 USD)')
+        summary_file.write('Quantitative Features')
+        summary_file.write('\n')
+        summary_file.write('1. Public Flows per Capita (USD)')
+        summary_file.write('\n')
+        summary_file.write('2. Renewable Energy Share of Electricity Production (%)')
+        summary_file.write('\n')
+        summary_file.write('3. Renewable Energy Capacity per Capita (W/inhabitant)')
+        summary_file.write('\n')
+        summary_file.write('4. EPI and CDA Indicators')
+        summary_file.write('\n')
+        summary_file.write('5. Public Flows per Capita (USD)')
+        summary_file.write('\n\n')
+        summary_file.write('Qualitative Feature')
+        summary_file.write('\n')
+        summary_file.write('1. Countries by Region')
+        summary_file.write('\n\n')
+        summary_file.write('Public Flows per Capita (USD)')
         summary_file.write('\n')
         summary_file.write(quant_stat_1.to_string())
         summary_file.write('\n\n')
@@ -77,17 +95,23 @@ def main():
         summary_file.write(qual_stat.to_string())
 
     # (2) Pairwise Correlations
-    selected_features = ['Public Flows per Capita (2021 USD)', 'Renewable Energy Share of Electricity Production (%)',
+    selected_features = ['Public Flows per Capita (USD)', 'Renewable Energy Share of Electricity Production (%)',
                          'SDG 7b1 RE capacity per capita (W/inhabitant)', 'EPI.new', 'CDA.new']
     correlation_matrix = proc_irena_epi[selected_features].corr()
 
     correlations_filename = "data_processing\correlations.txt"
     with open(correlations_filename, 'w') as correlations_file:
+        correlations_file.write('Correlations were calculated using data from the year 2022 to avoid the complexity of'
+                                ' a time dimension. However, for the EPI and CDA scores, the year 2024 was used, as '
+                                'the 2022 scores do not fully reflect data from that year')
+        correlations_file.write('\n\n')
         correlations_file.write(correlation_matrix.to_string())
 
     # (3) Plots of Distributions
 
-    # 1
+    sns.set_theme()
+
+    # 1 AB
     fig, ax = plt.subplots()
     ax.set(title="Public Flows per Capita and Renewable Share \nin Electricity Production (2022)",
            xlabel="Public Flows in Renewable Energy per Capita (USD)",
@@ -95,132 +119,149 @@ def main():
     ax.set_xlim(left=-5, right=150)
     ax.set_ylim(bottom=-0.05, top=1.05)
     ax.yaxis.set_major_formatter(mtick.PercentFormatter(1.0))
-    ax.scatter(proc_irena_epi["Public Flows per Capita (2021 USD)"],
-               proc_irena_epi["Renewable Energy Share of Electricity Production (%)"], s=5, color='blue')
+    ax.scatter(proc_irena_epi["Public Flows per Capita (USD)"],
+               proc_irena_epi["Renewable Energy Share of Electricity Production (%)"], s=5)
     fig.show()
     fig.savefig("visuals\AB.png")
 
-    # 2
+    # 2 AC
     fig, ax = plt.subplots()
     ax.set(title="Public Flows per Capita and Installed RE \nCapacity Per Capita (2022)",
            xlabel="Public Flows in Renewable Energy per Capita (USD)", ylabel="RE Capacity per Capita (W/inhabitant)")
     ax.set_xlim(left=-5, right=150)
     ax.set_ylim(bottom=-100, top=2700)
-    ax.scatter(proc_irena_epi["Public Flows per Capita (2021 USD)"],
-               proc_irena_epi["SDG 7b1 RE capacity per capita (W/inhabitant)"], s=5, color='blue')
+    ax.scatter(proc_irena_epi["Public Flows per Capita (USD)"],
+               proc_irena_epi["SDG 7b1 RE capacity per capita (W/inhabitant)"], s=5)
     fig.show()
     fig.savefig("visuals\AC.png")
 
-    # 3
+    # 3 AD
     fig, ax = plt.subplots()
-    ax.set(title="Public Flows (2022) and EPI score (2024)",
+    ax.set(title="Public Flows (2022) and Most Recent EPI score",
            xlabel="Public Flows in Renewable Energy per Capita (USD)", ylabel="EPI Score")
     ax.set_xlim(left=-5, right=150)
-    ax.scatter(proc_irena_epi["Public Flows per Capita (2021 USD)"],
-               proc_irena_epi["EPI.new"], s=5, color='blue')
+    ax.scatter(proc_irena_epi["Public Flows per Capita (USD)"],
+               proc_irena_epi["EPI.new"], s=5)
     fig.show()
     fig.savefig("visuals\AD.png")
 
-    # 4
+    # 4 AE
     fig, ax = plt.subplots()
-    ax.set(title="Public Flows (2022) and CDA score (2024)",
+    ax.set(title="Public Flows (2022) Most Recent CDA score",
            xlabel="Public Flows in Renewable Energy per Capita (USD)", ylabel="CDA Score")
     ax.set_xlim(left=-5, right=150)
-    ax.scatter(proc_irena_epi["Public Flows per Capita (2021 USD)"],
-               proc_irena_epi["CDA.new"], s=5, color='blue')
+    ax.scatter(proc_irena_epi["Public Flows per Capita (USD)"],
+               proc_irena_epi["CDA.new"], s=5)
     fig.show()
     fig.savefig("visuals\AE.png")
 
-    # 5
+    # 5 BC
     fig, ax = plt.subplots()
     ax.set(title="Renewable Energy Share and Installed \n RE Capacity Per Capita (2022)",
            xlabel="Renewable Energy Share of Electricity Production (%)",
            ylabel="RE Capacity per Capita (W/Inhabitant)")
     ax.scatter(proc_irena_epi["Renewable Energy Share of Electricity Production (%)"],
-               proc_irena_epi["SDG 7b1 RE capacity per capita (W/inhabitant)"], s=5, color='blue')
+               proc_irena_epi["SDG 7b1 RE capacity per capita (W/inhabitant)"], s=5)
     ax.xaxis.set_major_formatter(mtick.PercentFormatter(1.0))
     fig.show()
     fig.savefig("visuals\BC.png")
 
-    # 6
+    # 6 BD
     fig, ax = plt.subplots()
-    ax.set(title="Renewable Energy Share (2022) and EPI Score (2024)",
+    ax.set(title="Renewable Energy Share (2022) and Most Recent EPI score",
            xlabel="Renewable Energy Share of Electricity Production (%)", ylabel="EPI Score")
     ax.scatter(proc_irena_epi["Renewable Energy Share of Electricity Production (%)"],
-               proc_irena_epi["EPI.new"], s=5, color='blue')
+               proc_irena_epi["EPI.new"], s=5)
     ax.xaxis.set_major_formatter(mtick.PercentFormatter(1.0))
     fig.show()
     fig.savefig("visuals\BD.png")
 
-    # 7
+    # 7 BE
     fig, ax = plt.subplots()
-    ax.set(title="Renewable Energy Share (2022) and CDA Score (2024)",
+    ax.set(title="Renewable Energy Share (2022) and Most Recent CDA score",
            xlabel="Renewable Energy Share of Electricity Production (%)", ylabel="CDA Score")
     ax.scatter(proc_irena_epi["Renewable Energy Share of Electricity Production (%)"],
-               proc_irena_epi["CDA.new"], s=5, color='blue')
+               proc_irena_epi["CDA.new"], s=5)
     ax.xaxis.set_major_formatter(mtick.PercentFormatter(1.0))
     fig.show()
     fig.savefig("visuals\BE.png")
 
-    # 8
+    # 8 CD
     fig, ax = plt.subplots()
-    ax.set(title="Installed RE Capacity Per Capita (2022) and EPI Score (2024)",
+    ax.set(title="Installed RE Capacity Per Capita (2022) and Most Recent EPI score",
            xlabel="RE Capacity per Capita (W/Inhabitant)", ylabel="EPI Score")
     ax.scatter(proc_irena_epi["SDG 7b1 RE capacity per capita (W/inhabitant)"],
-               proc_irena_epi["EPI.new"], s=5, color='blue')
+               proc_irena_epi["EPI.new"], s=5)
     fig.show()
     fig.savefig("visuals\CD.png")
 
-    # 9
+    # 9 CE
     fig, ax = plt.subplots()
-    ax.set(title="Installed RE Capacity Per Capita (2022) and CDA Score (2024)",
+    ax.set(title="Installed RE Capacity Per Capita (2022) and Most Recent CDA score",
            xlabel="RE Capacity per Capita (W/Inhabitant)", ylabel="CDA Score")
     ax.scatter(proc_irena_epi["SDG 7b1 RE capacity per capita (W/inhabitant)"],
-               proc_irena_epi["CDA.new"], s=5, color='blue')
+               proc_irena_epi["CDA.new"], s=5)
     fig.show()
     fig.savefig("visuals\CE.png")
 
-    # 10
+    # 10 DE
     fig, ax = plt.subplots()
-    ax.set(title="EPI Score (2024) and CDA Score (2024)",
+    ax.set(title="Most Recent EPI score and Most Recent CDA score",
            xlabel="EPI Score", ylabel="CDA Score")
     ax.scatter(proc_irena_epi["EPI.new"],
-               proc_irena_epi["CDA.new"], s=5, color='blue')
+               proc_irena_epi["CDA.new"], s=5)
     fig.show()
     fig.savefig("visuals\DE.png")
 
-    # 11
+    #11 BAR GRAPH
     fig, ax = plt.subplots()
-    ax.set(title="Public Flows in Renewable Energy per Capita (2000 - 2022)",
-           xlabel="Year",
-           ylabel="Public Flows in Renewable Energy per Capita (USD)")
-    ax.set_ylim(bottom=-5, top=1000)
-    ax.scatter(proc_irena["Year"],
-               proc_irena["Public Flows per Capita (2021 USD)"], s=5, color='blue')
+    data = qual_stat[qual_stat['Year'] == 2000].iloc[:, 1:6]
+    data = data.T
+    ax.set(title='Countries by Region', xlabel="Region", ylabel="Count")
+    sns.barplot(data=data, x=data.index, y=data[0])
+    ax.bar_label(ax.containers[0], fontsize=10);
+    ax.set_ylim(bottom=0, top=60)
     fig.show()
-    fig.savefig("visuals\A_time_series.png")
+    fig.savefig("visuals\F.png")
 
-    # 12
-    fig, ax = plt.subplots()
-    ax.set(title="Renewable Energy Share of \nElectricity Production (2000 - 2022)",
-           xlabel="Year",
-           ylabel="Renewable Energy Share of Electricity Production (%)")
-    ax.scatter(proc_irena["Year"],
-               proc_irena["Renewable Energy Share of Electricity Production (%)"], s=5, color='blue')
-    ax.yaxis.set_major_formatter(mtick.PercentFormatter(1.0))
-    fig.show()
-    fig.savefig("visuals\B_time_series.png")
+    #12 Data Generality
+    g = sns.displot(data=proc_irena_epi, x="EPI.new", kde=True)
+    g.fig.show()
+    g.fig.savefig("visuals\data_generality.png")
 
-    # 13
-    fig, ax = plt.subplots()
-    ax.set(title="Installed RE Capacity per Capita (2000 - 2022)",
-           xlabel="Year",
-           ylabel="Installed RE Capacity per Capita (W/Inhabitant)")
-    ax.scatter(proc_irena["Year"],
-               proc_irena["SDG 7b1 RE capacity per capita (W/inhabitant)"], s=5, color='blue')
-    fig.show()
-    fig.savefig("visuals\C_time_series.png")
+    print('Exported visuals directory visuals/')
 
+    # # 11 TIME SERIES A
+    # fig, ax = plt.subplots()
+    # ax.set(title="Public Flows in Renewable Energy per Capita (2000 - 2022)",
+    #        xlabel="Year",
+    #        ylabel="Public Flows in Renewable Energy per Capita (USD)")
+    # ax.set_ylim(bottom=-5, top=1000)
+    # ax.scatter(proc_irena["Year"],
+    #            proc_irena["Public Flows per Capita (USD)"], s=5)
+    # fig.show()
+    # fig.savefig("visuals\A_time_series.png")
+    #
+    # # 12 TIME SERIES B
+    # fig, ax = plt.subplots()
+    # ax.set(title="Renewable Energy Share of \nElectricity Production (2000 - 2022)",
+    #        xlabel="Year",
+    #        ylabel="Renewable Energy Share of Electricity Production (%)")
+    # ax.scatter(proc_irena["Year"],
+    #            proc_irena["Renewable Energy Share of Electricity Production (%)"], s=5)
+    # ax.yaxis.set_major_formatter(mtick.PercentFormatter(1.0))
+    # fig.show()
+    # fig.savefig("visuals\B_time_series.png")
+    #
+    # # 13 TIME SERIES C
+    # fig, ax = plt.subplots()
+    # ax.set(title="Installed RE Capacity per Capita (2000 - 2022)",
+    #        xlabel="Year",
+    #        ylabel="Installed RE Capacity per Capita (W/Inhabitant)")
+    # ax.scatter(proc_irena["Year"],
+    #            proc_irena["SDG 7b1 RE capacity per capita (W/inhabitant)"], s=5)
+    # fig.show()
+    # fig.savefig("visuals\C_time_series.png")
 
 if __name__ == '__main__':
     main()
