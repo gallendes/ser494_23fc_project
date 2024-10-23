@@ -9,7 +9,7 @@ def flows_per_capita():
     flows_per_capita = pd.merge(irena_flows, pop_data, how='inner', on=['Country Code', 'Year'])
     flows_per_capita['Public Flows per Capita (USD)'] = ((flows_per_capita['Public Flows (2021 USD M)'] * 1000000)
                                                               / flows_per_capita['Population'])
-    flows_per_capita = flows_per_capita[flows_per_capita['Year'] != 2023]
+    flows_per_capita = flows_per_capita.loc[flows_per_capita['Year'] != 2023]
     return flows_per_capita
 
 def percent_renewable(df):
@@ -36,12 +36,12 @@ def cap_per_capita(df):
     return irena_flows_and_cap
 
 def epi(df):
-    # This function creates a filtered version of the previous dataframe to display data for 2022,
+    # This function calculates country averages for each of the features including data from 2000 to 2023,
     # and adds the EPI and CDA 2024 indicators to this filtered dataframe.
-    # Missing scores for EPI and CDA in 2024 were replaced with the mean of the dataset.
     epi_cda = epi_data.filter(items=['iso', 'EPI.old', 'EPI.new', 'CDA.old', 'CDA.new'])
     epi_cda.rename(columns={'iso' : 'Country Code'}, inplace=True)
-    irena_epi = df.loc[df['Year'] == 2022]
+    irena_epi = pd.pivot_table(data=df, index=['Region', 'Country Code', 'Country'], aggfunc="mean").reset_index()
+    irena_epi.drop('Year', axis=1, inplace=True)
     irena_epi = pd.merge(irena_epi, epi_cda, how='left', on=['Country Code'])
 
     # This list of countries / territories do not have EPI and CDA scores.
@@ -53,9 +53,9 @@ def epi(df):
         "Aruba": "NLD",
         "British Virgin Islands": "GBR",
         "Cayman Islands": "GBR",
-        "China Hong Kong Special Administrative Region": "CHN",
+        "China, Hong Kong Special Administrative Region": "CHN",
         "Curaçao": "NLD",
-        "Democratic People's Republic of Korea": "Independent",
+        "Democratic People's Republic of Korea (the)": "Independent",
         "Faroe Islands": "DNK",
         "French Polynesia": "FRA",
         "Greenland": "DNK",
@@ -71,8 +71,8 @@ def epi(df):
         "Sint Maarten (Dutch Part)": "NLD",
         "Somalia": "Independent",
         "South Sudan": "Independent",
-        "State of Palestine": "Independent",
-        "Syrian Arab Republic": "Independent",
+        "State of Palestine (the)": "Independent",
+        "Syrian Arab Republic (the)": "Independent",
         "Turks and Caicos Islands": "GBR",
         "Tuvalu": "Independent",
         "United States Virgin Islands": "USA",
@@ -127,7 +127,7 @@ def main():
     # 6) Include Quantitative Feature 3: 'RE capacity per capita'
     proc_irena = cap_per_capita(proc_irena)
 
-    # 7) Calculate Quantitative Features 4 and 5:
+    # 7) Include Quantitative Features 4 and 5:
     #    EPI 2024 (Environmental Performance Index) and
     #    CDA 2024 (Adjusted emissions growth rate for carbon dioxide)
     proc_irena_epi = epi(proc_irena)

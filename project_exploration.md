@@ -237,22 +237,194 @@ Melnikov, Adrian Whiteman.
 > - **Interpretation**: This record displays the total population of the subregion of Latin American & the Caribbean. 
 
 ## Background Domain Knowledge
-TODO
+
+The transition to renewable energy is a critical effort to combat climate change and promote carbon footprint reduction globally, while promoting sustainable development. This project aims to explore correlations between renewable energy indicators and to analyze trends, specifically focusing on the statistical report **IRENA 2024: Renewable Energy Statistics** and on the **Environmental Performance Index (EPI) 2024** report for data sourcing.
+
+The **International Renewable Energy Agency (IRENA)** is an intergovernmental organization that supports countries in their transition to a sustainable energy future. IRENA 2024 provides reliable data on power generation capacity from renewable sources, actual power generation from both renewable and non-renewable energy, as well as public investments related to renewable energy development.
+
+Several quantitative features are considered for this analysis, including:
+
+1. **Public Flows per Capita (USD)** from 2000 to 2022
+2. **Renewable Energy Share of Electricity Production (%)** from 2000 to 2022
+3. **Renewable Energy Capacity per Capita (W/inhabitant)** from 2000 to 2022
+
+These features should reveal the interconnectedness of financial investments and renewable energy capacity, emphasizing
+the role of public funds in fostering renewable energy development. The analysis will also explore the relationships 
+between these quantitative features and their correlation with the 2024 scores of the **Environmental Performance Index 
+(EPI)**, as well as the **Adjusted emissions growth rate for carbon dioxide (CDA)** indicator. 
+
+The project aims to examine correlations, such as the potential positive correlation between **Public Flows per Capita**
+and the EPI or CDA indicators, indicating that higher public investments in renewable energy may or may not contribute 
+to improved environmental performance in countries. Additionally, it may uncover a strong correlation between **Renewable
+Energy Capacity per Capita** and the EPI, demonstrating that countries with greater renewable energy capacity per 
+individual tend to score higher on environmental performance metrics.
+
+IRENA’s page on **Investment Trends** mentions that by addressing key risks and barriers, public finance, including 
+climate finance, plays an important role in bridging the financing gap and attracting further investment from the 
+private sector to renewables. However, the same page also mentions that globally, the public sector provided less
+than one-third of renewable energy investment in 2020. (1) Therefore, it is important to visualize the data to determine
+the real behavior of these correlations.
+
+Additionally, to the previous correlation, this analysis may uncover a negative correlation between **Public Flows per 
+Capita** and **Renewable Energy Capacity per Capita**, indicating that flows are being directed toward countries with 
+less renewable energy infrastructure. In relation to this statistic, it is worth mentioning the first page of Chapter 5
+of the **SDG7 Report (2024)**, which states: "Tracking of Sustainable Development Goal (SDG) indicator 7.a.1 reveals 
+that international public financial flows in support of clean energy in developing countries rebounded in 2022. However,
+the rebound did not correct a declining five-year trend that may delay the achievement of SDG 7." (2) This provides 
+insight into the current global situation. 
+
+As noted by Norma Hutchinson, “the global transition to renewable energy is likely to be financed largely by the 
+private sector, including utility companies, corporations, project developers, and various investment funds.” (3) 
+According to her WRI working paper, we might not expect to see a strong influence of public investments on renewable 
+energy trends, which emphasizes the government’s role on providing regulatory frameworks and policy solutions to 
+challenges that are impeding private investment.
+
+1. [International Renewable Energy Agency (IRENA): Investment.](https://www.irena.org/Energy-Transition/Finance-and-investment/Investment)
+2. [IEA, IRENA, UNSD, World Bank, WHO: 2024. Tracking SDG 7: The Energy Progress Report.](https://trackingsdg7.esmap.org/data/files/download-documents/sdg7-report2024-0611-v9-highresforweb.pdf)
+3. [Hutchinson, N., et al. (2021, June 4). Unlocking a renewable energy future: How government action can drive private investment. World Resources Institute. ](https://www.wri.org/research/unlocking-renewable-energy-future-how-government-action-can-drive-private-investment)
+
 
 ## Dataset Generality
-TODO
+
+The dataset is representative of the real world as it includes renewable energy public flows, generation data, and 
+population information for 208 countries from 2000 to 2022. It also incorporates 2024 Environmental Performance Index
+(EPI) and Adjusted Emissions Growth Rate for Carbon Dioxide (CDA) scores. The use of 2024 scores is justified because
+they assess countries' performances using the most recent methodology, covering a wide range of indicators over a long
+period. Some subindicators draw on data from as early as the 1950s. The EPI is a weighted average of these subindicator 
+scores, providing a comprehensive view of environmental performance. For the CDA, the relevant period of IRENA's analysis 
+focuses on the years 2013 to 2022
+
+To demonstrate the representativeness of the dataset, an almost normal distribution of EPI 2024 scores in the data 
+is generated in the script ```wf_visualizations.py``` and saved in ```visuals\data_generality.png```. This distribution
+reflects the balance in environmental performance, reflecting a realistic sample of global conditions.
 
 ## Data Transformations
-### Transformation N
-**Description:** TODO
+### Transformation 1
+**Description:**
 
-**Soundness Justification:** TODO
+The first operation was performed on the World Bank population data file. The first three rows were discarded because
+rather than containing usable data, they are only headers that introduce the dataset. Additionally, as the data 
+originally has years as column labels instead of rows, the melt operation had to be applied to transpose the yearly
+populations into rows with yearly population data for each country.
 
-(duplicate above as many times as needed; remove this line when done)
+**Soundness Justification**: 
 
+This operation does not alter the data. It is simply used to adapt the format to the merge in the next transformation.
+
+### Transformation 2
+
+**Description:**
+
+The ```flows_per_capita``` function calculates public flows per capita in USD by integrating public 
+investment data from IRENA with population statistics from the World Bank.
+
+Step-by-Step Description
+
+1. A new pivot table is created that sums public flows by ```Region```, ```Country```, and ```Year```.
+2. This pivot table is merged with the processed population dataframe ```pop_data``` based on ```Country Code```
+and ```Year``` to align public flow data with population figures.
+3. A new column, ```Public Flows per Capita (USD)```, is created by dividing total public flows by the population.
+4. The year 2023 is excluded from the analysis.
+
+**Soundness Justification**:
+
+Step-by-Step Justification
+
+1. This step maintains the original data and only aggregates it with a sum.
+2. This process excludes 8 countries from IRENA that are not represented in the World Bank population data, 
+specifically Anguilla, Cook Islands, French Guiana, Montserrat, Niue, Réunion, Saint Helena, and Tokelau, which 
+together have an approximate population of 1.2 million. These countries will be included with population 
+data from an alternative source in the next milestone.
+3. This step performs a calculation with existing data. ```Public Flows per Capita (USD)``` adds fairness to the
+comparison between countries, as it adjusts for population differences.
+4. IRENA's 2024 dataset lacks information on renewable energy installed capacity and public flows for the year 2023.
+Including incomplete data could skew results and undermine the comparability of findings across the timeline. 
+
+### Transformation 3
+
+**Description:**
+
+The ```percent_renewable``` function calculates a new column ```Renewable Energy Share of Electricity Production (%)```
+and adds it to the previously created dataframe. It shows the proportion of electricity generation coming from
+renewable sources.
+
+**Soundness Justification**:
+
+Null values were replaced with 0's in this step because empty values in the report represent measured values of 0.
+
+### Transformation 4
+
+**Description:**
+
+The ```cap_per_capita``` function introduces the field ```RE capacity per capita``` to the previously created dataframe.
+
+**Soundness Justification**:
+
+This operation does not alter the data. ```RE capacity per capita``` already exists in the source data.
+
+### Transformation 5
+
+**Description:**
+
+The ```epi``` function creates a filtered version of the previous dataframe, calculating country averages 
+for each feature from 2000 to 2022. It then adds the EPI and CDA 2024 indicators to this filtered 
+dataset. Missing values for EPI and CDA 2024 were handled using imputation, depending on whether 
+the entity is a territory or an independent country.
+
+**Soundness Justification**:
+
+To avoid clustering the mean, territories reliant on other nations borrowed EPI and CDA scores from their
+parent nations. For independent countries, the average 2024 score was used for imputation.
 
 ## Visualizations
-### Visual N
-**Analysis:** TODO
+### Visual 1: AB.png
 
-(duplicate above as many times as needed; remove this line when done)
+**Analysis:** 
+
+This scatter plot explores the correlation between public flows per capita and installed renewable
+energy capacity per capita (2000–2022). After removing outliers that distort the main tendencies, 
+the trend aligns with our initial hypothesis outlined in the domain knowledge description. 
+Although correlations.txt initially calculated a weak positive correlation, likely influenced by
+outliers, the visually adjusted data now reveals a weak negative correlation. This suggests that public 
+flows are being directed toward countries with less developed renewable energy infrastructure.
+
+### Visual 2: AD.png
+
+**Analysis:**
+
+This trend reveals a slightly positive correlation between public flows (2000–2022) and the most recent CDA scores. 
+By removing outliers that heavily obscured the primary trends, we were able to highlight this relationship. 
+The correlations.txt file reflects a weak negative correlation, which is influenced by outliers, particularly 
+the Lao People's Democratic Republic, which has a CDA score of 0 and high public flows per capita of 57.32 USD.
+However, this should not be misleading. The trend reflects that higher public flows in renewable energy 
+per capita may contribute to slower emissions growth rates for C02!
+
+### Visual 3: BC.png
+
+**Analysis:**
+
+The comparison between renewable energy share and installed renewable energy capacity per capita is 
+expected to be positive because it confirms that countries with greater installed capacity are more 
+likely to generate a higher proportion of their energy from renewable sources. It suggests that countries
+who expand their renewable infrastructure are more likely to have a larger share of renewables
+in their overall energy mix.
+
+### Visual 4: CD.png
+
+**Analysis:**
+
+After removing 9 outliers that exceed the threshold of renewable energy per capita at 1,250 W per person,
+(please refer to wf_visualization.py) the plot reveals an approximately positive trend between renewable energy
+capacity and the most recent Environmental Performance Index (EPI) score. This means that countries with higher 
+installed renewable energy capacity tend to have better EPI scores, suggesting that increased investment and 
+capacity in renewable energy correlates with improved environmental performance.
+
+### Visual 5: CE.png
+
+**Analysis:**
+
+Renewable energy capacity per capita and the most recent CDA score demonstrate a positive correlation 
+for the years 2000 to 2022 because as countries invest in renewable energy infrastructure, they 
+effectively slow down the rate of their carbon dioxide emissions. This investment directly contributes 
+to a higher score in their CDA indicator, reflecting a commitment to sustainable energy practices and 
+a reduction in environmental impact. 

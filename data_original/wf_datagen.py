@@ -2,7 +2,7 @@
 
 import hashlib
 
-file_path = "API_SP.POP.TOTL_DS2_en_csv_v2_31753.csv"
+file_path = "IRENA_Stats_extract_2024 H2.xlsx"
 
 with open(file_path, "rb") as file:
     file_data = file.read()
