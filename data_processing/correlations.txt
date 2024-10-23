@@ -1,0 +1,16 @@
+The correlations matrix was computed calculating country averages for each feature from 2000 to 2022.
+For the EPI and CDA, the most recent scores are used because they evaluate countries' performances using the 
+latest methodology across a wide range of indicators over an extended time frame.
+
+1. Public Flows in Renewable Energy per Capita (USD) (2000 - 2022)
+2. Renewable Energy Share of Electricity Production (%) (2000 - 2022)
+3. Renewable Energy Capacity per Capita (W/inhabitant) (2000 - 2022)
+4. Environmental Performance Index (EPI) Scores in 2024 (0 - 100)
+5. Adjusted Emissions Growth Rate for CO2 (CDA) Scores in 2024 (0 - 100)
+
+                                                      Public Flows per Capita (USD)  Renewable Energy Share of Electricity Production (%)  SDG 7b1 RE capacity per capita (W/inhabitant)   EPI.new   CDA.new
+Public Flows per Capita (USD)                                              1.000000                                             -0.055189                                       0.142377  0.010338 -0.001796
+Renewable Energy Share of Electricity Production (%)                      -0.055189                                              1.000000                                       0.359913 -0.166293 -0.269703
+SDG 7b1 RE capacity per capita (W/inhabitant)                              0.142377                                              0.359913                                       1.000000  0.369322  0.200349
+EPI.new                                                                    0.010338                                             -0.166293                                       0.369322  1.000000  0.761939
+CDA.new                                                                   -0.001796                                             -0.269703                                       0.200349  0.761939  1.000000
