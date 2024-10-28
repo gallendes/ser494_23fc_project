@@ -8,21 +8,19 @@
 **Description:** This project aims to investigate the factors influencing renewable energy adoption across various
 countries. The study will focus on examining how variables such as renewable energy participation in total energy 
 production, public investment, and installed per capita renewable energy capacity interact with environmental 
-performance. The type of data to be analyzed includes annual renewable energy production, annual energy production,
+performance. The type of data to be analyzed includes annual renewable energy production, total annual energy production,
 annual public flows to renewable, and EPI (Energy Performance Index) results for more than 200 countries.<br><br>
 
 Research questions:
 
 ```  
-- RO1: To describe 
+- RO1: To describe the trends within renewable energy production among countries. 
 
-- RO2:
+- RO2: To predict the EPI score of countries using their per capita renewable energy installed capacity.
 
-- RO3:
+- RO3: To defend the model for performing the prediction in RO2.
 
-- RO4:
-
-- RO5:
+- RO4: To evaluate causal relationships implied by the RO2 model.
 ```
 
 **Intellectual Merit:** The project has the potential to uncover insights about how different countries are
@@ -80,4 +78,16 @@ Carbon Emissions on Renewable Energy Adoption: Exploring Key Factors."](https://
 > - Li, Zheng, Ranran Luan, and Boqiang Lin. ["The Trend and Factors Affecting Renewable Energy Distribution and 
 >Disparity Across Countries."](https://doi.org/10.1016/j.energy.2022.124265) Energy, vol. 254, Part B, 2022, 124265,
 >ScienceDirect, doi.org/10.1016/j.energy.2022.124265.
+> 
+> 
+> - International Renewable Energy Agency (IRENA): [Investment](https://www.irena.org/Energy-Transition/Finance-and-investment/Investment)
+> 
+> 
+> - IEA, IRENA, UNSD, World Bank, WHO: 2024. [Tracking SDG 7: The Energy Progress Report.](https://trackingsdg7.esmap.org/data/files/download-documents/sdg7-report2024-0611-v9-highresforweb.pdf)
+> 
+> 
+> - Hutchinson, N., et al. (2021, June 4). Unlocking a renewable energy future: How government action can drive private investment. World Resources Institute. (https://doi.org/10.46830/wriwp.20.00077)
+>
+> 
+> - Hannah Ritchie and Max Roser (2020) - “CO₂ emissions” Published online at OurWorldinData.org. Retrieved from: 'https://ourworldindata.org/co2-emissions'
 
