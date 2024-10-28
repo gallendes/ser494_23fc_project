@@ -9,7 +9,7 @@
 countries. The study will focus on examining how variables such as renewable energy participation in total energy 
 production, public investment, and installed per capita renewable energy capacity interact with environmental 
 performance. The type of data to be analyzed includes annual renewable energy production, total annual energy production,
-annual public flows to renewable, and EPI (Energy Performance Index) results for more than 200 countries.<br><br>
+annual public flows to renewable, and EPI (Energy Performance Index) results for more than 200 countries.<br>
 
 **Research questions**:
 ```  
