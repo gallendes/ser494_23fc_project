@@ -11,8 +11,7 @@ production, public investment, and installed per capita renewable energy capacit
 performance. The type of data to be analyzed includes annual renewable energy production, total annual energy production,
 annual public flows to renewable, and EPI (Energy Performance Index) results for more than 200 countries.<br><br>
 
-Research questions:
-
+**Research questions**:
 ```  
 - RO1: To describe the trends within renewable energy production among countries. 
 
