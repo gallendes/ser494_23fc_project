@@ -13,13 +13,15 @@ annual public flows to renewable, and EPI (Energy Performance Index) results for
 
 **Research questions**:
 ```  
-- RO1: To describe the trends within renewable energy production among countries. 
+- RO1: To describe trends within renewable energy production among countries utilizing 20-year averages. 
 
-- RO2: To predict the EPI score of countries using their per capita renewable energy installed capacity.
+- RO2: To predict the Environmental Performance Index (EPI) score of countries using their Renewable Energy 
+Installed Capacity per Capita (20-year averages).
 
 - RO3: To defend the model for performing the prediction in RO2.
 
-- RO4: To evaluate causal relationships implied by the RO2 model.
+- RO4: To evaluate causal relationships implied by the RO2 model, such as the influence of renewable energies on
+carbon emissions.
 ```
 
 **Intellectual Merit:** The project has the potential to uncover insights about how different countries are
