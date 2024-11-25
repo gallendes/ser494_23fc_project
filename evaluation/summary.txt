@@ -1,0 +1,5 @@
+       Dataset Method      MAE        MSE
+proc_irena_epi Linear 9.341051 131.107601
+proc_irena_epi  Ridge 9.342812 131.276846
+proc_irena_epi  LASSO 9.765743 140.910240
+proc_irena_epi Neural 7.777734  79.805742
