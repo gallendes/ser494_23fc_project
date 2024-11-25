@@ -31,8 +31,8 @@ prediction error in absolute terms.
 
 ### Alternative 2: Ridge Linear Regression
 **Construction:** A Ridge Regression model was built with sklearn's ```Ridge```  implementation. 
-Ridge introduces a regularization term based on the L2 distance of each weight from the origin  
-to penalize large coefficients and reduce overfitting. Changing the loss function adds a term to
+Ridge introduces a regularization term based on the L2 distance of each weight from the origin to
+penalize large coefficients and reduce overfitting. Changing the loss function adds a term to
 the normal equation ```w = [(A^T * A + λI)^-1 * A^T * b]```
 
 **Evaluation:** Ridge Regression has an MSE of 131.2768 (slightly worse than Linear Regression, 
