@@ -18,7 +18,7 @@ models = {
     "lr_model": LinearRegression(),
     "ridge_model": Ridge(),
     "lasso_model": Lasso(),
-    "nn_model": MLPRegressor(max_iter=5000, learning_rate_init=0.01)
+    "nn_model": MLPRegressor(max_iter=10000, learning_rate_init=0.01)
 }
 
 # Step 3: Train and save each model
