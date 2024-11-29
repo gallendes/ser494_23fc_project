@@ -36,7 +36,7 @@ def cap_per_capita(df):
     return irena_flows_and_cap
 
 def epi(df):
-    # This function calculates country averages for each of the features including data from 2000 to 2023,
+    # This function calculates country averages for each of the features including data from 2000 to 2022,
     # and adds the EPI and CDA 2024 indicators to this filtered dataframe.
     epi_cda = epi_data.filter(items=['iso', 'EPI.old', 'EPI.new', 'CDA.old', 'CDA.new'])
     epi_cda.rename(columns={'iso' : 'Country Code'}, inplace=True)

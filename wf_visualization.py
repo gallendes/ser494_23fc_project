@@ -184,8 +184,8 @@ def main():
     #       8) Antigua and Barbuda 55.99068
     #       9) Estonia 55.35798
     fig, ax = plt.subplots()
-    ax.set(title="Public Flows (2000 - 2022) and Most Recent EPI score",
-           xlabel="Public Flows in Renewable Energy per Capita (USD) (2000 - 2022)", ylabel="EPI Score")
+    ax.set(title="Public Flows (2000 - 2022) and Most Recent EPI Score (2024)",
+           xlabel="Public Flows in Renewable Energy per Capita (USD) (2000 - 2022)", ylabel="EPI Score (2024)")
     ax.set_xlim(left=-2.5, right=42)
     ax.set_ylim(bottom=20, top=80)
     ax.scatter(proc_irena_epi["Public Flows per Capita (USD)"],
@@ -206,8 +206,8 @@ def main():
     #       8) Antigua and Barbuda 55.99068
     #       9) Estonia 55.35798
     fig, ax = plt.subplots()
-    ax.set(title="Public Flows (2000 - 2022) Most Recent CDA score",
-           xlabel="Public Flows in Renewable Energy per Capita (USD) (2000 - 2022)", ylabel="CDA Score")
+    ax.set(title="Public Flows (2000 - 2022) and Most Recent CDA score (2024) ",
+           xlabel="Public Flows in Renewable Energy per Capita (USD) (2000 - 2022)", ylabel="CDA Score (2024)")
     ax.set_ylim(top=85, bottom=-4)
     ax.set_xlim(left=-1.5, right=42)
     ax.scatter(proc_irena_epi["Public Flows per Capita (USD)"],
@@ -232,8 +232,8 @@ def main():
 
     # 6 BD - No outliers removed.
     fig, ax = plt.subplots()
-    ax.set(title="Renewable Energy Share (2000 - 2022) and Most Recent EPI score",
-           xlabel="Renewable Share of Electricity (%) (2000 - 2022)", ylabel="EPI Score")
+    ax.set(title="Renewable Energy Share (2000 - 2022) and Most Recent EPI Score (2024)",
+           xlabel="Renewable Share of Electricity (%) (2000 - 2022)", ylabel="EPI Score (2024)")
     ax.scatter(proc_irena_epi["Renewable Energy Share of Electricity Production (%)"],
                proc_irena_epi["EPI.new"], s=5)
     ax.xaxis.set_major_formatter(mtick.PercentFormatter(1.0))
@@ -243,9 +243,9 @@ def main():
     # 7 BE - One outlier removed with a CDA score of 100.
     #       1) Estonia: 100
     fig, ax = plt.subplots()
-    ax.set(title="Renewable Energy Share (2000 - 2022) and Most Recent CDA score",
+    ax.set(title="Renewable Energy Share (2000 - 2022) and Most Recent CDA Score (2024)",
            xlabel="Renewable Share of Electricity"
-                  " (%) (2000 - 2022)", ylabel="CDA Score")
+                  " (%) (2000 - 2022)", ylabel="CDA Score (2024)")
     ax.set_ylim(bottom=-5, top=85)
     ax.scatter(proc_irena_epi["Renewable Energy Share of Electricity Production (%)"],
                proc_irena_epi["CDA.new"], s=5)
@@ -264,8 +264,8 @@ def main():
     #       8) New Zealand: 1522.65159
     #       9) Paraguay: 1403.15577
     fig, ax = plt.subplots()
-    ax.set(title="Renewable Energy Capacity Per Capita \n (2000 - 2022) and Most Recent EPI score",
-           xlabel="Renewable Capacity per Capita (W) (2000 - 2022)", ylabel="EPI Score")
+    ax.set(title="Renewable Energy Capacity Per Capita and Most Recent EPI Score",
+           xlabel="Renewable Capacity per Capita (W/inhabitant)", ylabel="EPI Score")
     ax.scatter(proc_irena_epi["SDG 7b1 RE capacity per capita (W/inhabitant)"],
                proc_irena_epi["EPI.new"], s=5)
     ax.set_xlim(left=-100, right=1250)
@@ -285,8 +285,8 @@ def main():
     #      - One outlier removed with a CDA score of 100.
     #       1) Estonia: 100
     fig, ax = plt.subplots()
-    ax.set(title="Renewable Energy Capacity Per Capita \n (2000 - 2022) and Most Recent CDA score",
-           xlabel="Renewable Capacity per Capita (W) (2000 - 2022)", ylabel="CDA Score")
+    ax.set(title="Renewable Energy Capacity Per Capita \n (2000 - 2022) and Most Recent CDA Score (2024)",
+           xlabel="Renewable Capacity per Capita (W) (2000 - 2022)", ylabel="CDA Score (2024)")
     ax.scatter(proc_irena_epi["SDG 7b1 RE capacity per capita (W/inhabitant)"],
                proc_irena_epi["CDA.new"], s=5)
     ax.set_xlim(left=-70, right=1250)
@@ -296,8 +296,8 @@ def main():
 
     # 10 DE - No outliers removed.
     fig, ax = plt.subplots()
-    ax.set(title="Most Recent EPI score and Most Recent CDA score",
-           xlabel="EPI Score", ylabel="CDA Score")
+    ax.set(title="Most Recent EPI Score (2024) and Most Recent CDA Score (2024)",
+           xlabel="EPI Score (2024)", ylabel="CDA Score (2024)")
     ax.scatter(proc_irena_epi["EPI.new"],
                proc_irena_epi["CDA.new"], s=5)
     fig.show()
