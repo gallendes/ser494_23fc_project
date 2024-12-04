@@ -324,37 +324,5 @@ def main():
 
     print('Exported visuals directory visuals/')
 
-    # # 11 TIME SERIES A
-    # fig, ax = plt.subplots()
-    # ax.set(title="Public Flows in Renewable Energy per Capita (2000 - 2022)",
-    #        xlabel="Year",
-    #        ylabel="Public Flows in Renewable Energy per Capita (USD)")
-    # ax.set_ylim(bottom=-5, top=1000)
-    # ax.scatter(proc_irena["Year"],
-    #            proc_irena["Public Flows per Capita (USD)"], s=5)
-    # fig.show()
-    # fig.savefig("visuals\A_time_series.png")
-    #
-    # # 12 TIME SERIES B
-    # fig, ax = plt.subplots()
-    # ax.set(title="Renewable Energy Share of \nElectricity Production (2000 - 2022)",
-    #        xlabel="Year",
-    #        ylabel="Renewable Energy Share of Electricity Production (%)")
-    # ax.scatter(proc_irena["Year"],
-    #            proc_irena["Renewable Energy Share of Electricity Production (%)"], s=5)
-    # ax.yaxis.set_major_formatter(mtick.PercentFormatter(1.0))
-    # fig.show()
-    # fig.savefig("visuals\B_time_series.png")
-    #
-    # # 13 TIME SERIES C
-    # fig, ax = plt.subplots()
-    # ax.set(title="Installed RE Capacity per Capita (2000 - 2022)",
-    #        xlabel="Year",
-    #        ylabel="Installed RE Capacity per Capita (W/Inhabitant)")
-    # ax.scatter(proc_irena["Year"],
-    #            proc_irena["SDG 7b1 RE capacity per capita (W/inhabitant)"], s=5)
-    # fig.show()
-    # fig.savefig("visuals\C_time_series.png")
-
 if __name__ == '__main__':
     main()
