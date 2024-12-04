@@ -1,5 +1,5 @@
 #### SER494: Project Proposal
-#### Title: Global Trends in Renewable Energy Adoption
+#### Title: Renewable Energy and Environmental Progress
 #### Author: Anonymous
 #### Date: October 28th, 2024
 

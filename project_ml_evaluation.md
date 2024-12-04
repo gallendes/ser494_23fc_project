@@ -1,5 +1,5 @@
 #### SER494: Project Evaluation
-#### Title: Global Trends in Renewable Energy Adoption
+#### Title: Renewable Energy and Environmental Progress
 #### Author: Gonzalo Allendes
 #### Date: November 23rd, 2024
 

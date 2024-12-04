@@ -1,5 +1,5 @@
 #### SER494: Project Experimentation
-#### Title: Global Trends in Renewable Energy Adoption
+#### Title: Renewable Energy and Environmental Progress
 #### Author: Gonzalo Allendes
 #### Date: November 23rd, 2024
 
@@ -72,7 +72,7 @@ per capita leads to a better Environmental Performance Index (EPI) score.
 ### Varying B
 **Prediction Trend Seen:** Feature B was increased in increments of 1.33 within the range [8.63, 12.63],
 selected to center the variations around Chile's public flows in renewable energy per capita of 10.629 USD.
-The model predicted the EPI scores [52.1911, 53.3844, 52.5764, 52.7684], suggesting a weak positive
+The model predicted the EPI scores [52.1911, 52.3844, 52.5764, 52.7684], suggesting a weak positive
 correlation. However, in another run, the model's predictions [51.7154, 51.4690, 51.2393, 51.0095] suggested
 a weak negative correlation instead. Unlike Feature A, the direction of the correlation does not consistently 
 hold true across multiple executions. These results suggest that while Feature B might influence the EPI, 
