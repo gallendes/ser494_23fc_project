@@ -117,7 +117,7 @@ def main():
     X_selected_scaled = pd.DataFrame(scaler.transform(X_selected), columns=X_train.columns)
 
     # Make predictions using the neural network model
-    y_pred_selected = nn_model.predict(X_selected_scaled)
+    y_pred_selected = predict_input(nn_model, X_selected_scaled)
 
     # Print the predictions to the console
     print(f"\nPredictions for Chile and United States using Neural Network model:")

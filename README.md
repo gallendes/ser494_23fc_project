@@ -1,4 +1,4 @@
-﻿# Analyzing Renewable Energy Adoption Through Data Science
+﻿## EPI Prediction Using Machine Learning & AI
 
 This repository contains files for the individual course project in SER494: Data Science for Software Engineers (fall 2024) created by Gonzalo Allendes for partial fulfillment of the course requirements.
 
@@ -23,10 +23,15 @@ This project analyzes global trends in renewable energy adoption by processing a
 
 ### 3. Components
 
-- **wf_core.py**: 
-    
+- **wf_core.py**: Runs the main workflow by executing three key scripts sequentially.
+
     ```
-    Runs data processing (wf_dataprocessing.py) and visualization (wf_visualization.py).
+    1) Data Processing – Calls wf_dataprocessing.py to clean, transform, and compute key indicators.  
+  
+    2) Visualization - Calls wf_visualization.py to generate summary statistics and graphical insights.
+  
+    3) Machine Learning Workflow - Calls wf_ml_evaluation.py to train multiple models, generate predictions,
+       evaluate their performance, and conduct scenario-based experiments on selected countries.
     ```
 
 - **wf_dataprocessing.py**:
@@ -46,7 +51,25 @@ This project analyzes global trends in renewable energy adoption by processing a
     
     2) Produces scatter plots and bar charts illustrating key findings.
     ```
+- **wf_ml_evaluation.py**:
+  ```
+  1) Runs wf_ml_training.py to train and save multiple machine learning models.
+    
+  2) Computes evaluation metrics (Mean Absolute Error, Mean Squared Error) 
+     for each model to assess performance.
+  
+  3) Summarizes model accuracy and stores results in evaluation/summary.txt.
 
+  4) Selects "Chile" and "United States" as explainable records to analyze model predictions.
+
+  5) Uses the trained Neural Network model (MLPRegressor) to:
+     - Predict EPI scores for these countries and compare them with actual values using wf_ml_prediction.py.
+     - Conduct scenario-based experiments by varying:
+       a) Renewable Energy Capacity per Capita.
+       b) Public Flows per Capita.
+       c) Both features increasing together.
+       d) Both features varying inversely.
+  ```
 ### 5. Markdown Files Explanation
 
 This repository contains several .md files that document various aspects of the project:
